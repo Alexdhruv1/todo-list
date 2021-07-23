@@ -2,12 +2,21 @@ import './App.css';
 import Header from './Mycomponents/Header';
 import { Todos } from "./Mycomponents/Todos";
 import { Footer } from "./Mycomponents/Footer";
+import { AddTodo} from "./Mycomponents/AddTodo";
+import React, { useState } from 'react';
 
 function App() {
-  const onDelete = ()=> {
-    console.log("I am onDelete");
+  const onDelete = (todo)=> {
+    console.log("I am onDelete of todo", todo);
+    // let index = todos.indexOf(todo);
+    // todos.splice(index,1);
+
+    setTodos(todos.filter((d)=>{
+      return d!==todo;
+    }))
+
   }
-  let todos = [
+  const [todos, setTodos] = useState([
     {
       sno: 1,
       title: "go to the market",
@@ -23,7 +32,7 @@ function App() {
       title: "go to the shop",
       desc: "to buy coca-cola,you need to go to shop"
     }
-  ]
+  ]);
 
   return (
     <>
